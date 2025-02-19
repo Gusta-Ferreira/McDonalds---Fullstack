@@ -1,0 +1,16 @@
+baixar prisma
+npm install @prisma/client@6.2.1 - baixar prisma client 
+npm run dev - rodar o servidor
+npx prisma init - iniciar prisma
+npx prisma format - formatar prisma
+npx prisma migrate dev - toda vez que alterar o banco deve executar isso
+npm install -D ts-node@10.9.2 - baixar biblioteca
+npx prisma db seed - rodar leitor de typescript
+
+npx shadcn@2.3.0 init - baixar biblioteca shadcn
+> y
+npx shadcn@2.3.0 add button - baixar botao shadcn
+npx shadcn@2.3.0 add input - baixar input shadcn
+
+npm install -D eslint-plugin-simple-import-sort@12.1.1 - baixar plugin
+npm install -D prettier-plugin-tailwindcss@0.6.5 - prettierXtailwind
