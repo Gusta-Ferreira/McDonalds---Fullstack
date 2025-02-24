@@ -10,7 +10,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { formatCurrency } from "@/helpers/format-currency";
 
 import CartSheet from "../../components/cart-seet";
-import { CartContext } from "../../contexts/card";
+import { CartContext } from "../../contexts/cart";
 
 
 interface ProductDetailsProps {

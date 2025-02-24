@@ -8,7 +8,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 
-import { CartContext } from "../contexts/card";
+import { CartContext } from "../contexts/cart";
 
 const CartSheet = () => {
   const { isOpen, toggleCart, products } = useContext(CartContext);
