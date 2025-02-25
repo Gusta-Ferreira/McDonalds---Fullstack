@@ -3,7 +3,7 @@
 import { Product } from "@prisma/client";
 import { createContext, ReactNode, useState } from "react";
 
- export interface CartProduct
+export interface CartProduct
   extends Pick<Product, "id" | "name" | "price" | "imageUrl"> {
   quantity: number;
 }
@@ -12,6 +12,7 @@ export interface ICartContext {
   isOpen: boolean;
   products: CartProduct[];
   total: number;
+  totalQuantity: number;
   toggleCart: () => void;
   addProduct: (product: CartProduct) => void;
   decreaseProductQuantity: (productId: string) => void;
@@ -21,14 +22,14 @@ export interface ICartContext {
 
 export const CartContext = createContext<ICartContext>({
   isOpen: false,
-  products: [],
   total: 0,
+  totalQuantity: 0,
+  products: [],
   toggleCart: () => {},
   addProduct: () => {},
   decreaseProductQuantity: () => {},
   increaseProductQuantity: () => {},
   removeProduct: () => {},
-  
 });
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
@@ -38,8 +39,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const total = products.reduce((acc, product) => {
     return acc + product.price * product.quantity;
   }, 0);
-
-
+  const totalQuantity = products.reduce((acc, product) => {
+    return acc + product.quantity;
+  }, 0);
   const toggleCart = () => {
     setIsOpen((prev) => !prev);
   };
@@ -62,7 +64,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       });
     });
   };
-
   const decreaseProductQuantity = (productId: string) => {
     setProducts((prevProducts) => {
       return prevProducts.map((prevProduct) => {
@@ -76,7 +77,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       });
     });
   };
-
   const increaseProductQuantity = (productId: string) => {
     setProducts((prevProducts) => {
       return prevProducts.map((prevProduct) => {
@@ -87,7 +87,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       });
     });
   };
-
   const removeProduct = (productId: string) => {
     setProducts((prevProducts) =>
       prevProducts.filter((prevProduct) => prevProduct.id !== productId),
@@ -98,12 +97,13 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       value={{
         isOpen,
         products,
-        total,
         toggleCart,
         addProduct,
         decreaseProductQuantity,
         increaseProductQuantity,
-        removeProduct
+        removeProduct,
+        total,
+        totalQuantity,
       }}
     >
       {children}
