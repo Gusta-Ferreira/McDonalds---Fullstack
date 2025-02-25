@@ -6,6 +6,7 @@ npx prisma format - formatar prisma
 npx prisma migrate dev - toda vez que alterar o banco deve executar isso
 npm install -D ts-node@10.9.2 - baixar biblioteca
 npx prisma db seed - rodar leitor de typescript
+npx prisma generate - Atualiza os tipo do prisma
 
 npx shadcn@2.3.0 init - baixar biblioteca shadcn
 > y
